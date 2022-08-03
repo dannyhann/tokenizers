@@ -32,6 +32,10 @@ class HanguelJamoMorphTokenizerTestCase(unittest.TestCase):
             result = self.tokenizer.jamo_tokenizer("개미핥기")
             self.assertEqual(result, "ㄱㅐㅁㅣㅎㅏㄾㄱㅣ")
 
+        with self.subTest("ABC타입 -> ABCㅌㅏㅇㅣㅂ"):
+            result = self.tokenizer.jamo_tokenizer("ABC타입")
+            self.assertEqual(result, "ABCㅌㅏㅇㅣㅂ")
+
     def test_chosung_tokenizer(self):
         with self.subTest("가나다 -> ㄱㄴㄷ"):
             result = self.tokenizer.chosung_tokenizer("가나다")
@@ -52,6 +56,10 @@ class HanguelJamoMorphTokenizerTestCase(unittest.TestCase):
         with self.subTest("개미핥기 -> ㄱㅁㅎㄱ"):
             result = self.tokenizer.chosung_tokenizer("개미핥기")
             self.assertEqual(result, "ㄱㅁㅎㄱ")
+
+        with self.subTest("ABC타입 -> ABCㅌㅇ"):
+            result = self.tokenizer.chosung_tokenizer("ABC타입")
+            self.assertEqual(result, "ABCㅌㅇ")
 
     def test_jungsung_tokenizer(self):
         with self.subTest("가나다 -> ㅏㅏㅏ"):
@@ -74,6 +82,14 @@ class HanguelJamoMorphTokenizerTestCase(unittest.TestCase):
             result = self.tokenizer.jungsung_tokenizer("개미핥기")
             self.assertEqual(result, "ㅐㅣㅏㅣ")
 
+        with self.subTest("왓더핵 -> ㅘㅓㅐ"):
+            result = self.tokenizer.jungsung_tokenizer("왓더핵")
+            self.assertEqual(result, "ㅘㅓㅐ")
+
+        with self.subTest("ABC타입 -> ABCㅏㅣ"):
+            result = self.tokenizer.jungsung_tokenizer("ABC타입")
+            self.assertEqual(result, "ABCㅏㅣ")
+
     def test_jongsung_tokenizer(self):
         with self.subTest("가나다 -> X "):
             result = self.tokenizer.jongsung_tokenizer("가나다")
@@ -94,6 +110,10 @@ class HanguelJamoMorphTokenizerTestCase(unittest.TestCase):
         with self.subTest("개미핥기 -> ㄾ"):
             result = self.tokenizer.jongsung_tokenizer("개미핥기")
             self.assertEqual(result, "ㄾ")
+
+        with self.subTest("ABC타입 -> ABCㅂ"):
+            result = self.tokenizer.jongsung_tokenizer("ABC타입")
+            self.assertEqual(result, "ABCㅂ")
 
     def test_engtokor_tokenizer(self):
         with self.subTest("가나다 -> rkskek "):
